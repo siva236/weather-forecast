@@ -1,0 +1,57 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .flex-container > div {
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
+  }
+  .flex{
+  flex:1
+  }
+  .titleFlex {
+    flex: 30%;
+    font-size: 30px !important;
+  }
+  .SearchFlex {
+    flex: 20%;
+  }
+  .tables{
+    margin:0;
+    padding:0;
+    width: 100%;
+    text-align: center;
+  }
+  .tables thead tr td{
+    background-color: #bf8533;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  .emptyDiv {
+    flex: 40%;
+  }
+  
+
+  input {
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+  button {
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .tempData {
+    background-color: #dbb0c8;
+  }
+  @media screen and (max-width: 578px) {
+    .flex-container {
+     flex-direction: column;
+    }
+  }
