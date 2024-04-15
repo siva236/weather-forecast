@@ -45,8 +45,8 @@ export class AppComponent {
   modifyRawData(data:any) {
    let weatherarray:any = [];
      data.list.forEach((ele:any) => {
-      const date = ele.dt_txt.split(' ')[0];
-      ele['date'] = moment(date).format('MM/DD/YYYY');;
+      const date = moment(ele.dt_txt).format('MM/DD/YYYY');
+      ele['date'] = date;
       if (weatherarray.length && !this.checkRecordAlreadyExist(weatherarray, date)) {
         weatherarray.push(ele)
       } 
@@ -58,7 +58,7 @@ export class AppComponent {
      this.data = data;
   }
   checkRecordAlreadyExist(weatherarray = [], date:any) {
-    return weatherarray.find((el:any) => date == el.dt_txt.split(' ')[0])
+    return weatherarray.find((el:any) => date == el.date)
    }
   
 }
