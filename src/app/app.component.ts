@@ -15,32 +15,32 @@ import moment from 'moment';
 
 export class AppComponent {
   data: any;
+  isShowLoader: boolean = false;
   constructor(private weatherService: WeatherService ) {
     this.getweatherData();
   }
   cityName: string = 'Kakinada';
   getweatherData() {
+    this.isShowLoader = true
+    this.data = null;
     let data = {
       q: this.cityName,
       appid:'1635890035cbba097fd5c26c8ea672a1'
       }
-  
-    setTimeout(() => {
       this.weatherService.getData(data).subscribe( {
       next: (response:any) => {
          if (response) {
+          this.isShowLoader = false;
           this.modifyRawData(response);
           this.cityName = response.city.name;
         }
     },
     error: (err) => {
-      console.log(err)
+      this.isShowLoader = false;
       window.alert(err.message)
     }
-  }
-       );
-
-    }, 1000)
+  });
+    
   }
   modifyRawData(data:any) {
    let weatherarray:any = [];
@@ -58,8 +58,7 @@ export class AppComponent {
      this.data = data;
   }
   checkRecordAlreadyExist(weatherarray = [], date:any) {
-    const finding =weatherarray.find((el:any) => date == el.dt_txt.split(' ')[0])
-    return finding;
+    return weatherarray.find((el:any) => date == el.dt_txt.split(' ')[0])
    }
   
 }

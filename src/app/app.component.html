@@ -2,13 +2,11 @@
 <div class="flex-container">
   <div class="titleFlex"> Weather in your city</div>
   <div class="SearchFlex"><input name="cityName" [(ngModel)]="cityName"> <button (click) = "getweatherData()">Search</button></div>
-  @if(!data) {
-    <img src="assets/icons8-spinner.gif" />
-    
+  @if(isShowLoader) {
+    <img src="assets/icons8-spinner.gif" width="50" height="50"/>
       }
   <div class="emptyDiv"></div>
 </div>
-
 <div class="flex-container">
   @for (item of data?.list; track item.dt) {
     <div class="flex">
@@ -42,7 +40,16 @@
       </table>
     </div>
 }
-  
-  <!-- <div class="flex">2</div>
-  <div class="flex">3</div>   -->
+@empty {
+  @if(isShowLoader) {
+  <div class="flex text-center">
+    <img src="assets/icons8-spinner.gif" width="50" height="50"/>
+  </div>
+}
+}
+@if(!isShowLoader && !data) {
+    <div class="flex noRecords">
+      No records found
+    </div>
+}
 </div>

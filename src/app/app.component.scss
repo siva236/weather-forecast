@@ -35,6 +35,15 @@
   .emptyDiv {
     flex: 40%;
   }
+  .noRecords {
+    text-align: center;
+    border: 2px solid black;
+    padding:15px !important;
+    border-radius: 5px;
+  }
+  .text-center {
+    text-align: center;
+  }
   
 
   input {
